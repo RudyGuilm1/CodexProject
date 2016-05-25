@@ -4,6 +4,8 @@ package benjaminetrudy.projectcodex;
 import GestionDB.CoToDB;
 import GestionDB.Requests;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import views.CodexFrame;
 
 /**
@@ -12,13 +14,17 @@ import views.CodexFrame;
  */
 public class CodexApplication {
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         /*CodexFrame fenetre = new CodexFrame();
         fenetre.setTitle("Bienvenue dans le Chocodex !");
         fenetre.setVisible(true);*/
                 
-        for (Requests ans : Requests.findAll()) {
+        try{
+            for (Requests ans : Requests.findAll()) {
                 System.out.println(ans);
+            }
+        }catch (SQLException ex) {
+            Logger.getLogger(CodexApplication.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -26,9 +26,11 @@ public class Requests {
         this.percentChoco = pPercent;
     }
     
-    public static ArrayList<Requests> findAll() throws SQLException{
+    public static ArrayList<Requests> findAll() throws SQLException, ClassNotFoundException{
         
-        connection = CoToDB.getInstance().getConnexion();
+        Class.forName("org.sqlite.JDBC");
+        CoToDB.getInstance();
+        connection = CoToDB.getConnexion();
         
         if (connection != null){
             // Création du statement.
