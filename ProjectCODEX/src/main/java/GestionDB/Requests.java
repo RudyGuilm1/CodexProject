@@ -17,7 +17,7 @@ public class Requests {
     //private Bytes imgChoco;       A gérer pour l'image du chocolat.
     
     private static Connection connection = null;
-    private static ArrayList<Requests> resultsList;
+    private static ArrayList<Requests> resultsList = new ArrayList();
     
     private Requests(int pId, String pName, String pDescript, int pPercent){
         this.id = pId;
@@ -53,13 +53,17 @@ public class Requests {
                 //System.out.println(String.format("id: %s ~ name: %s",id,name));
                 resultsList.add(new Requests(id, name, descript, percent));
             }
+            
+            // On ferme le resultSet & le statement.
+            resultSet.close();
+            statement.close();
         }
-        
+
         return resultsList;
     }
     
     @Override
     public String toString() {
-        return  "Chocolat n°" + id + " : " + name+" (Cacao : "+percentChoco+"% )\n Description : "+descript;
+        return  "Chocolat n°" + id + " : " + name+" (Cacao : "+percentChoco+"%)\n\tDescription : "+descript;
     }
 }

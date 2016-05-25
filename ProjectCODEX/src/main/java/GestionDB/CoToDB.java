@@ -36,7 +36,7 @@ public class CoToDB {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fileChooser.getSelectedFile(); // Stockage du fichier sélectionné par l'utilisateur.
             pathDB = file.getAbsolutePath();           // Stockage du path dans la variable.
-            CoToDB.DBConnect = DriverManager.getConnection(pathDB);
+            CoToDB.DBConnect = DriverManager.getConnection("jdbc:sqlite:"+pathDB);
         }
     }
 
