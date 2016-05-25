@@ -1,4 +1,4 @@
-package dbconnec;
+package GestionDB;
 
 import java.io.File;
 import java.sql.Connection;
@@ -30,6 +30,7 @@ public class CoToDB {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("SQLite", "sqlite");
         fileChooser.setFileFilter(filter);
 
+        // Ouverture de la boite de dialogue pour sélectionner le chemin de la DB.
         int returnVal = fileChooser.showOpenDialog(null);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -40,7 +41,7 @@ public class CoToDB {
     }
 
     // Methode d'obtention d'instance de la connection à la base de donnée.
-    private static CoToDB getInstance() {
+    public static CoToDB getInstance() {
         if (instance == null) {
             try {
                 instance = new CoToDB();
@@ -53,7 +54,7 @@ public class CoToDB {
         return instance;
     }
 
-    private static Connection getConnexion() {
+    public static Connection getConnexion() {
         return DBConnect;
     }
 }
