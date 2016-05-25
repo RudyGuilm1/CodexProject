@@ -23,8 +23,9 @@ public class CoToDB {
     private CoToDB() throws SQLException {
         String pathDB = "";
 
+        // Déclaration d'une variable file.
         JFileChooser fileChooser = new JFileChooser();
-        
+
         // Entrée des filtres, puis application du filtre.
         FileNameExtensionFilter filter = new FileNameExtensionFilter("SQLite", "sqlite");
         fileChooser.setFileFilter(filter);
@@ -48,11 +49,11 @@ public class CoToDB {
                 System.out.println("Erreur de connection à la BDD");
             }
         }
-        
+
         return instance;
     }
-    
-    private static Connection getConnexion(){
+
+    private static Connection getConnexion() {
         return DBConnect;
     }
 }

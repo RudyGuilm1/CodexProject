@@ -1,5 +1,12 @@
 package views;
 
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
 public class CodexFrame extends javax.swing.JFrame {
 
     public CodexFrame() {
@@ -10,21 +17,20 @@ public class CodexFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        list_Choco = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        btn_Nouveau = new javax.swing.JButton();
+        label_NomChoco = new javax.swing.JLabel();
+        txtzone_NomChoco = new javax.swing.JTextField();
+        label_PourcentChoco = new javax.swing.JLabel();
+        txtzone_PourcentChoco = new javax.swing.JTextField();
+        label_Descript = new javax.swing.JLabel();
+        scroll_Descript = new javax.swing.JScrollPane();
+        txtzone_Descript = new javax.swing.JTextArea();
+        pannel_ImgChoco = new javax.swing.JPanel();
+        btn_Save = new javax.swing.JButton();
+        btn_Delete = new javax.swing.JButton();
+        label_Title = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chocodex");
@@ -35,149 +41,137 @@ public class CodexFrame extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        list_Choco.setViewportView(jList1);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("AR CENA", 0, 36)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(93, 53, 16));
-        jButton1.setText("Nouvo Choco");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_Nouveau.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Nouveau.setFont(new java.awt.Font("AR CENA", 0, 36)); // NOI18N
+        btn_Nouveau.setForeground(new java.awt.Color(93, 53, 16));
+        btn_Nouveau.setText("Nouvo Choco");
+        btn_Nouveau.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_NouveauActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(93, 53, 16));
-        jLabel1.setText("Nom du Choco");
+        label_NomChoco.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
+        label_NomChoco.setForeground(new java.awt.Color(93, 53, 16));
+        label_NomChoco.setText("Nom du Choco");
 
-        jLabel2.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(93, 53, 16));
-        jLabel2.setText("Pour100tage de KKO");
+        label_PourcentChoco.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
+        label_PourcentChoco.setForeground(new java.awt.Color(93, 53, 16));
+        label_PourcentChoco.setText("Pour100tage de KKO");
 
-        jLabel3.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(93, 53, 16));
-        jLabel3.setText("Description");
+        label_Descript.setFont(new java.awt.Font("AR CENA", 0, 14)); // NOI18N
+        label_Descript.setForeground(new java.awt.Color(93, 53, 16));
+        label_Descript.setText("Description");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtzone_Descript.setColumns(20);
+        txtzone_Descript.setRows(5);
+        scroll_Descript.setViewportView(txtzone_Descript);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(93, 53, 16)));
-        jPanel1.setPreferredSize(new java.awt.Dimension(100, 100));
+        pannel_ImgChoco.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(93, 53, 16)));
+        pannel_ImgChoco.setPreferredSize(new java.awt.Dimension(100, 100));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pannel_ImgChocoLayout = new javax.swing.GroupLayout(pannel_ImgChoco);
+        pannel_ImgChoco.setLayout(pannel_ImgChocoLayout);
+        pannel_ImgChocoLayout.setHorizontalGroup(
+            pannel_ImgChocoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 94, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pannel_ImgChocoLayout.setVerticalGroup(
+            pannel_ImgChocoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 94, Short.MAX_VALUE)
         );
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(93, 53, 16));
-        jButton2.setText("Changer les infos");
+        btn_Save.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Save.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+        btn_Save.setForeground(new java.awt.Color(93, 53, 16));
+        btn_Save.setText("Sauver les changements");
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(93, 53, 16));
-        jButton3.setText("Sauver les changements");
+        btn_Delete.setBackground(new java.awt.Color(255, 255, 255));
+        btn_Delete.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
+        btn_Delete.setForeground(new java.awt.Color(93, 53, 16));
+        btn_Delete.setText("Retirer le choco");
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jButton4.setFont(new java.awt.Font("AR CENA", 0, 18)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(93, 53, 16));
-        jButton4.setText("Retirer le choco");
-
-        jLabel4.setFont(new java.awt.Font("AR DARLING", 0, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(93, 53, 16));
-        jLabel4.setText("Le CHOCODEX");
+        label_Title.setFont(new java.awt.Font("AR DARLING", 0, 36)); // NOI18N
+        label_Title.setForeground(new java.awt.Color(93, 53, 16));
+        label_Title.setText("Le CHOCODEX");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_Title)
+                .addGap(223, 223, 223))
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField2)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(53, 53, 53)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton4))))
+                        .addComponent(btn_Nouveau)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(223, 223, 223))
+                        .addComponent(list_Choco, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label_PourcentChoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label_NomChoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(label_Descript, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtzone_NomChoco)
+                                    .addComponent(txtzone_PourcentChoco)
+                                    .addComponent(scroll_Descript, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53)
+                                .addComponent(pannel_ImgChoco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btn_Save)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btn_Delete)))
+                        .addGap(158, 158, 158))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addComponent(label_Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(list_Choco, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(label_NomChoco)
+                                    .addComponent(txtzone_NomChoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(label_PourcentChoco)
+                                    .addComponent(txtzone_PourcentChoco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton2)
-                                    .addComponent(jButton3)
-                                    .addComponent(jButton4)))
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(label_Descript)
+                                    .addComponent(scroll_Descript, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(pannel_ImgChoco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_Save)
+                            .addComponent(btn_Delete))))
                 .addGap(32, 32, 32)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_Nouveau, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_NouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NouveauActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_NouveauActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -209,20 +203,59 @@ public class CodexFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JButton btn_Delete;
+    private javax.swing.JButton btn_Nouveau;
+    private javax.swing.JButton btn_Save;
     private javax.swing.JList<String> jList1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel label_Descript;
+    private javax.swing.JLabel label_NomChoco;
+    private javax.swing.JLabel label_PourcentChoco;
+    private javax.swing.JLabel label_Title;
+    private javax.swing.JScrollPane list_Choco;
+    private javax.swing.JPanel pannel_ImgChoco;
+    private javax.swing.JScrollPane scroll_Descript;
+    private javax.swing.JTextArea txtzone_Descript;
+    private javax.swing.JTextField txtzone_NomChoco;
+    private javax.swing.JTextField txtzone_PourcentChoco;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_Delete() {
+        return btn_Delete;
+    }
+
+    public JButton getBtn_Nouveau() {
+        return btn_Nouveau;
+    }
+
+    public JButton getBtn_Save() {
+        return btn_Save;
+    }
+
+    public JList<String> getjList1() {
+        return jList1;
+    }
+
+    public JScrollPane getList_Choco() {
+        return list_Choco;
+    }
+
+    public JPanel getPannel_ImgChoco() {
+        return pannel_ImgChoco;
+    }
+
+    public JScrollPane getScroll_Descript() {
+        return scroll_Descript;
+    }
+
+    public JTextField getTxtzone_NomChoco() {
+        return txtzone_NomChoco;
+    }
+
+    public JTextField getTxtzone_PourcentChoco() {
+        return txtzone_PourcentChoco;
+    }
+
+    public JTextArea getTxtzone_Descript() {
+        return txtzone_Descript;
+    }
 }
