@@ -255,6 +255,26 @@ public class CodexFrame extends javax.swing.JFrame {
         return txtzone_PourcentChoco;
     }
 
+    public void setjList1(JList<String> jList1) {
+        this.jList1 = jList1;
+    }
+
+    public void setPannel_ImgChoco(JPanel pannel_ImgChoco) {
+        this.pannel_ImgChoco = pannel_ImgChoco;
+    }
+
+    public void setTxtzone_Descript(JTextArea txtzone_Descript) {
+        this.txtzone_Descript = txtzone_Descript;
+    }
+
+    public void setTxtzone_NomChoco(JTextField txtzone_NomChoco) {
+        this.txtzone_NomChoco = txtzone_NomChoco;
+    }
+
+    public void setTxtzone_PourcentChoco(JTextField txtzone_PourcentChoco) {
+        this.txtzone_PourcentChoco = txtzone_PourcentChoco;
+    }
+
     public JTextArea getTxtzone_Descript() {
         return txtzone_Descript;
     }

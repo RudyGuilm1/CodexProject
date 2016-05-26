@@ -33,10 +33,16 @@ public class CoToDB {
         // Ouverture de la boite de dialogue pour sélectionner le chemin de la DB.
         int returnVal = fileChooser.showOpenDialog(null);
 
+        // Si l'utilisateur a bien sélectionné un fichier et a bien cliqué sur "ouvrir", alors...
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File file = fileChooser.getSelectedFile(); // Stockage du fichier sélectionné par l'utilisateur.
-            pathDB = file.getAbsolutePath();           // Stockage du path dans la variable.
-            CoToDB.DBConnect = DriverManager.getConnection("jdbc:sqlite:"+pathDB);
+            // Stockage du fichier sélectionné par l'utilisateur.
+            File file = fileChooser.getSelectedFile();
+
+            // Stockage du path dans la variable.
+            pathDB = file.getAbsolutePath();
+
+            // Etablissement de la connection à la base de données.
+            CoToDB.DBConnect = DriverManager.getConnection("jdbc:sqlite:" + pathDB);
         }
     }
 
@@ -54,7 +60,11 @@ public class CoToDB {
         return instance;
     }
 
-    public static Connection getConnexion() {
+    // Getter pour obtenir la connection à la base de données.
+    public static Connection getConnexion() throws ClassNotFoundException {
+        Class.forName("org.sqlite.JDBC");
+        CoToDB.getInstance();
+
         return DBConnect;
     }
 }
