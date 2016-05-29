@@ -11,26 +11,41 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import views.CodexFrame;
 
 /**
  *
  * @author norxciel
  */
-public class CodexController {
+public final class CodexController {
 
     private CodexFrame myView;
-
-    public CodexController() {
+    
+    public CodexController(){
+        myView = new CodexFrame();
+        InitCodexController();
+        
+        try {
+            Refresh();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        myView.getBtn_Save().setEnabled(false);
+    }
+    
+    private void InitCodexController() {
 
         ActionListener CodexButtonAddListener = new ActionListener() {
-
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     CodexBtnAdd();
-                } catch (SQLException ex) {
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Err:CodexController:BtnAdd");
                 }
             }
         };
@@ -39,7 +54,12 @@ public class CodexController {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                CodexBtnSuppr();
+                try {
+                    CodexBtnSuppr();
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Err:CodexController:BtnSuppr");
+                }
             }
         };
 
@@ -49,65 +69,103 @@ public class CodexController {
             public void actionPerformed(ActionEvent e) {
                 try {
                     CodexBtnUpdate();
-                } catch (SQLException ex) {
+                } catch (ClassNotFoundException ex) {
                     Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Err:CodexController:BtnUpdate");
                 }
             }
         };
-        
+
         myView.getBtn_Nouveau().addActionListener(CodexButtonAddListener);
-
+        myView.getBtn_Delete().addActionListener(CodexButtonSupprListener);
+        myView.getBtn_Save().addActionListener(CodexButtonUpdateListener);
+        
+        myView.setVisible(true);
     }
 
-    private void CodexBtnAdd() throws SQLException {
-        int id,percent;
+    private void CodexBtnAdd() throws ClassNotFoundException {
+        int id, percent;
         String name, desc;
-        
+
         id = -1;
         name = myView.getTxtzone_NomChoco().getText();
         desc = myView.getTxtzone_Descript().getText();
         percent = Integer.parseInt(myView.getTxtzone_PourcentChoco().getText());
-        
+
         Requests newChoco = new Requests(id, name, desc, percent);
-        newChoco.addToDB();
-        
+        try {
+            newChoco.addToDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Err:CodexController:SQLAdd");
+        }
+
         clearAll();
+        Refresh();
     }
 
-    private void CodexBtnSuppr() {
+    private void CodexBtnSuppr() throws ClassNotFoundException {
+        
+        Requests delChoco = new Requests(myView.getTxtzone_NomChoco().getText());
+        
+        try {
+            delChoco.DeleteFromDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Err:CodexController:SQLDelete.");
+        }
         
         clearAll();
+        Refresh();
     }
-    
-    private void CodexBtnUpdate() throws SQLException{
-        int id,percent;
+
+    private void CodexBtnUpdate() throws ClassNotFoundException {
+        // Déclaration de variable buffers.
+        int percent;
         String name, desc;
         
-        id = -1;
+        // Buffering des variables.
         name = myView.getTxtzone_NomChoco().getText();
         desc = myView.getTxtzone_Descript().getText();
         percent = Integer.parseInt(myView.getTxtzone_PourcentChoco().getText());
         
-        Requests updateChoco = new Requests(id, name, desc, percent);
-        updateChoco.UpdateDB();
+        // Création d'une variable Requests et exécution de la méthode d'update.
+        Requests updateChoco = new Requests(name, desc, percent);
+        try {
+            updateChoco.UpdateDB();
+        } catch (SQLException ex) {
+            Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Err:CodexController:SQLUpdate");
+        }
         
+        // Clean des champs & rafraichissement de la liste.
         clearAll();
+        Refresh();
     }
-    
-    public void Refresh(){
-        
-    }
-    
-    public void clearAll(){
+
+    public void clearAll() {
+        // Méthode pour reset TOUS les champs.
         myView.getTxtzone_Descript().removeAll();
         myView.getTxtzone_NomChoco().removeAll();
         myView.getTxtzone_PourcentChoco().removeAll();
         myView.getPannel_ImgChoco().removeAll();
     }
-    
-    public void iniList() throws ClassNotFoundException, SQLException{
+
+    public void Refresh() throws ClassNotFoundException {
+        // Création d'une variable buffer pour établir une nouvelle liste.
+        DefaultListModel<String> bufferList = new DefaultListModel();
+        
+        try {
+            // Pour chaque résultat : ajout dans le buffer.
             for (Requests ans : Requests.findAll()) {
-                // Ajouter des lignes dans la liste.
+                bufferList.addElement(ans.getName());
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(CodexController.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Err:CodexController:Refresh");
+        }
+        
+        // On remplace l'ancienne liste par le buffer.
+        this.myView.get_listChoco().setModel(bufferList);
     }
 }

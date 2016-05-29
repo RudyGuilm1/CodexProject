@@ -1,5 +1,10 @@
 package views;
 
+import GestionDB.CoToDB;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JPanel;
@@ -17,8 +22,8 @@ public class CodexFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        list_Choco = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        scrollpane_ChocoList = new javax.swing.JScrollPane();
+        list_Choco = new javax.swing.JList<>();
         btn_Nouveau = new javax.swing.JButton();
         label_NomChoco = new javax.swing.JLabel();
         txtzone_NomChoco = new javax.swing.JTextField();
@@ -34,14 +39,17 @@ public class CodexFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chocodex");
-
-        jList1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(93, 53, 16)));
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
         });
-        list_Choco.setViewportView(jList1);
+
+        list_Choco.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(93, 53, 16)));
+        scrollpane_ChocoList.setViewportView(list_Choco);
 
         btn_Nouveau.setBackground(new java.awt.Color(255, 255, 255));
         btn_Nouveau.setFont(new java.awt.Font("AR CENA", 0, 36)); // NOI18N
@@ -112,7 +120,7 @@ public class CodexFrame extends javax.swing.JFrame {
                         .addComponent(btn_Nouveau)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(list_Choco, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollpane_ChocoList, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -140,7 +148,7 @@ public class CodexFrame extends javax.swing.JFrame {
                 .addComponent(label_Title)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(list_Choco, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollpane_ChocoList, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,6 +180,21 @@ public class CodexFrame extends javax.swing.JFrame {
     private void btn_NouveauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NouveauActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_NouveauActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        /*try {
+            // Code que la fenètre va exécuter à sa fermeture.
+            Connection closeCo = CoToDB.getConnexion();
+            closeCo.close();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(CodexFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // Code qui s'exécute à l'ouverture de la fenetre.
+        
+    }//GEN-LAST:event_formWindowOpened
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -206,14 +229,14 @@ public class CodexFrame extends javax.swing.JFrame {
     private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_Nouveau;
     private javax.swing.JButton btn_Save;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JLabel label_Descript;
     private javax.swing.JLabel label_NomChoco;
     private javax.swing.JLabel label_PourcentChoco;
     private javax.swing.JLabel label_Title;
-    private javax.swing.JScrollPane list_Choco;
+    private javax.swing.JList<String> list_Choco;
     private javax.swing.JPanel pannel_ImgChoco;
     private javax.swing.JScrollPane scroll_Descript;
+    private javax.swing.JScrollPane scrollpane_ChocoList;
     private javax.swing.JTextArea txtzone_Descript;
     private javax.swing.JTextField txtzone_NomChoco;
     private javax.swing.JTextField txtzone_PourcentChoco;
@@ -231,12 +254,12 @@ public class CodexFrame extends javax.swing.JFrame {
         return btn_Save;
     }
 
-    public JList<String> getjList1() {
-        return jList1;
+    public JList<String> get_listChoco() {
+        return list_Choco;
     }
 
     public JScrollPane getList_Choco() {
-        return list_Choco;
+        return scrollpane_ChocoList;
     }
 
     public JPanel getPannel_ImgChoco() {
@@ -256,7 +279,7 @@ public class CodexFrame extends javax.swing.JFrame {
     }
 
     public void setjList1(JList<String> jList1) {
-        this.jList1 = jList1;
+        this.list_Choco = jList1;
     }
 
     public void setPannel_ImgChoco(JPanel pannel_ImgChoco) {

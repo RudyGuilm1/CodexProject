@@ -19,10 +19,24 @@ public class Requests {
     private static Connection connection = null;
     private static ArrayList<Requests> resultsList = new ArrayList();
 
-    public Requests(int pId, String pName, String pDescript, int pPercent) {
+    public Requests(int pId, String pName, String pDesc, int pPercent) {
         this.id = pId;
         this.name = pName;
-        this.descript = pDescript;
+        this.descript = pDesc;
+        this.percentChoco = pPercent;
+    }
+    
+    public Requests(String pName){
+        this.id = -1;
+        this.name = pName;
+        this.descript = "?";
+        this.percentChoco = -1;
+    }
+    
+    public Requests(String pName, String pDesc, int pPercent){
+        this.id = -1;
+        this.name = pName;
+        this.descript = pDesc;
         this.percentChoco = pPercent;
     }
 
@@ -60,30 +74,33 @@ public class Requests {
         }
 
         return resultsList;
-    }
-    
+    }  
     
     // Penser aux preparedStatements.
     public void addToDB() throws SQLException{
         try (Statement statementAdd = connection.createStatement()) {
-            Boolean Querry = statementAdd.execute("INSERT INTO Chocolates(id,Name,Desccription,Cacao) VALUES('"+id+"','"+name+"','"+descript+"','"+percentChoco+"')");
+            Boolean Querry = statementAdd.execute("INSERT INTO Chocolates(id,Name,Description,Cacao) VALUES('"+id+"','"+name+"','"+descript+"','"+percentChoco+"')");
         }
     }
     
     public void UpdateDB() throws SQLException{
         try (Statement statementUpdate = connection.createStatement()) {
-            Boolean Querry = statementUpdate.execute("UPDATE Chocolates SET (...)");
+            Boolean Querry = statementUpdate.execute("UPDATE Chocolates SET ");
         }
     }
     
-    public void DeleteToDB() throws SQLException{
+    public void DeleteFromDB() throws SQLException{
         Statement statementDel = connection.createStatement();
         
-        Boolean Querry = statementDel.execute("");
+        Boolean Querry = statementDel.execute("DELETE FROM `Chocolates' WHERE `name` = "+this.name);
     }
 
     @Override
     public String toString() {
         return "Chocolat n°" + id + " : " + name + " (Cacao : " + percentChoco + "%)\n\tDescription : " + descript;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
