@@ -1,8 +1,12 @@
 package views;
 
 import GestionDB.CoToDB;
+import GestionDB.Requests;
+import static GestionDB.Requests.getResultsList;
+import controllers.CodexController;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -17,7 +21,7 @@ public class CodexFrame extends javax.swing.JFrame {
     public CodexFrame() {
         initComponents();
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,6 +53,11 @@ public class CodexFrame extends javax.swing.JFrame {
         });
 
         list_Choco.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(93, 53, 16)));
+        list_Choco.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                list_ChocoValueChanged(evt);
+            }
+        });
         scrollpane_ChocoList.setViewportView(list_Choco);
 
         btn_Nouveau.setBackground(new java.awt.Color(255, 255, 255));
@@ -182,19 +191,31 @@ public class CodexFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_NouveauActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        /*try {
+        try {
             // Code que la fenètre va exécuter à sa fermeture.
             Connection closeCo = CoToDB.getConnexion();
             closeCo.close();
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(CodexFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        }
     }//GEN-LAST:event_formWindowClosing
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // Code qui s'exécute à l'ouverture de la fenetre.
-        
+
     }//GEN-LAST:event_formWindowOpened
+
+    private void list_ChocoValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_list_ChocoValueChanged
+        for(Requests req : getResultsList()){
+           if(req.getName() == list_Choco.getSelectedValue()){
+               txtzone_NomChoco.setText(req.getName());
+               txtzone_Descript.setText(req.getDescript());
+               txtzone_PourcentChoco.setText(Integer.toString(req.getPercentChoco()));
+           }
+        }
+        //txtzone_NomChoco.setText(list_Choco.getSelectedValue());        
+        
+    }//GEN-LAST:event_list_ChocoValueChanged
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
