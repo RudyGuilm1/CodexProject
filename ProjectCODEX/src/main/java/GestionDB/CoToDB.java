@@ -47,6 +47,11 @@ public class CoToDB {
     }
 
     // Methode d'obtention d'instance de la connection à la base de donnée.
+
+    /**
+     *
+     * @return
+     */
     public static CoToDB getInstance() {
         if (instance == null) {
             try {
@@ -61,6 +66,12 @@ public class CoToDB {
     }
 
     // Getter pour obtenir la connection à la base de données.
+
+    /**
+     *
+     * @return
+     * @throws ClassNotFoundException
+     */
     public static Connection getConnexion() throws ClassNotFoundException {
         Class.forName("org.sqlite.JDBC");
         CoToDB.getInstance();

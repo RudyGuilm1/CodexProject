@@ -13,9 +13,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import views.CodexFrame;
+import views.CodexFrame;//
 
 /**
  *
@@ -25,6 +23,10 @@ public final class CodexController {
 
     private CodexFrame myView;
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     */
     public CodexController() throws ClassNotFoundException {
         myView = new CodexFrame();
         InitCodexController();
@@ -78,11 +80,12 @@ public final class CodexController {
             }
         };
         
-
+        // Initialisation des différents boutons.
         myView.getBtn_Nouveau().addActionListener(CodexButtonAddListener);
         myView.getBtn_Delete().addActionListener(CodexButtonSupprListener);
         myView.getBtn_Save().addActionListener(CodexButtonUpdateListener);
 
+        // Visibilité de la fenetre.
         myView.setVisible(true);
     }
 
@@ -154,6 +157,9 @@ public final class CodexController {
         }
     }
 
+    /**
+     *
+     */
     public void clearAll() {
         // Méthode pour reset TOUS les champs.
         myView.getTxtzone_Descript().setText("");
@@ -162,6 +168,10 @@ public final class CodexController {
         //myView.getPannel_ImgChoco().setText("");
     }
 
+    /**
+     *
+     * @throws ClassNotFoundException
+     */
     public void Refresh() throws ClassNotFoundException {
         // Création d'une variable buffer pour établir une nouvelle liste.
         DefaultListModel<String> bufferList = new DefaultListModel();

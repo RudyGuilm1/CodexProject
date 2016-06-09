@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -22,10 +20,21 @@ public class Requests {
     private static Connection connection = null;
     private static ArrayList<Requests> resultsList = new ArrayList();
 
+    /**
+     *
+     * @return
+     */
     public static ArrayList<Requests> getResultsList() {
         return resultsList;
     }
 
+    /**
+     *
+     * @param pId
+     * @param pName
+     * @param pDesc
+     * @param pPercent
+     */
     public Requests(int pId, String pName, String pDesc, int pPercent) {
         this.id = pId;
         this.name = pName;
@@ -33,6 +42,10 @@ public class Requests {
         this.percentChoco = pPercent;
     }
 
+    /**
+     *
+     * @param pName
+     */
     public Requests(String pName) {
         this.id = -1;
         this.name = pName;
@@ -40,6 +53,12 @@ public class Requests {
         this.percentChoco = -1;
     }
 
+    /**
+     *
+     * @param pName
+     * @param pDesc
+     * @param pPercent
+     */
     public Requests(String pName, String pDesc, int pPercent) {
         this.id = -1;
         this.name = pName;
@@ -47,6 +66,9 @@ public class Requests {
         this.percentChoco = pPercent;
     }
 
+    /**
+     *
+     */
     public Requests() {
         this.id = -1;
         this.name = "?";
@@ -54,6 +76,12 @@ public class Requests {
         this.percentChoco = -1;
     }
 
+    /**
+     *
+     * @return
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public static ArrayList<Requests> findAll() throws SQLException, ClassNotFoundException {
 
         // Etablissement de la connection.
@@ -96,7 +124,14 @@ public class Requests {
         return resultsList;
     }
 
-    
+    /**
+     *
+     * @param pName
+     * @param pDesc
+     * @param pCacao
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void addToDB(String pName, String pDesc, int pCacao) throws SQLException, ClassNotFoundException {
         try (Statement statementAdd = connection.createStatement()) {
             
@@ -117,6 +152,15 @@ public class Requests {
         }
     }
 
+    /**
+     *
+     * @param pName
+     * @param pDesc
+     * @param pCacao
+     * @param pNameList
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void UpdateDB(String pName, String pDesc, int pCacao, String pNameList) throws SQLException, ClassNotFoundException {
         // Déclaration d'un String pour la requète SQL + le PreparedStatement.
         String sql = "UPDATE Chocolates SET Name = ?, Description = ?, Cacao = ? WHERE"
@@ -134,56 +178,59 @@ public class Requests {
         
     }
 
+    /**
+     *
+     * @param pName
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
     public void DeleteFromDB(String pName) throws SQLException, ClassNotFoundException {
+        // Déclaration d'un String pour la requète SQL + le PreparedStatement. 
         String sql = "DELETE FROM 'Chocolates' WHERE Name = ?";
         
         try (PreparedStatement preparedStatement = CoToDB.getConnexion().prepareStatement(sql)) {
+            // Buffering du PrepS.
             preparedStatement.setString(1, pName);
             
+            // Execution + Fermeture du PrepS.
             preparedStatement.execute();
             preparedStatement.close();
         }
     }
-    public Requests returnObjByID(int pId) throws ClassNotFoundException {
-        Requests buffer = new Requests();
-
-        String sql = "SELECT Name,Description,Cacao FROM Chocolates WHERE id = ?";
-
-        try (PreparedStatement preparedStatement = CoToDB.getConnexion().prepareCall(sql)) {
-            preparedStatement.setInt(1, pId);
-            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-                buffer.name = resultSet.getString("Name");
-                buffer.descript = resultSet.getString("Description");
-                buffer.percentChoco = resultSet.getInt("Cacao");
-                resultSet.close();
-            }
-            
-            preparedStatement.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(Requests.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Err:Requests:preparedStatement");
-        }
-
-        return buffer;
-    }
-
+    
     @Override
     public String toString() {
         return "Chocolat n°" + id + " : " + name + " (Cacao : " + percentChoco + "%)\n\tDescription : " + descript;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPercentChoco() {
         return percentChoco;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getDescript() {
         return descript;
     }

@@ -11,6 +11,11 @@ import controllers.CodexController;
  */
 public class CodexApplication {
 
+    /**
+     *
+     * @param args
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws ClassNotFoundException {
         CodexController fenetre = new CodexController();
     }

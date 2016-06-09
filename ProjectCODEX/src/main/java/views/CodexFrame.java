@@ -3,10 +3,8 @@ package views;
 import GestionDB.CoToDB;
 import GestionDB.Requests;
 import static GestionDB.Requests.getResultsList;
-import controllers.CodexController;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -16,8 +14,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author norxciel
+ */
 public class CodexFrame extends javax.swing.JFrame {
 
+    /**
+     *
+     */
     public CodexFrame() {
         initComponents();
     }
@@ -217,6 +222,10 @@ public class CodexFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_list_ChocoValueChanged
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -263,62 +272,122 @@ public class CodexFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtzone_PourcentChoco;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     *
+     * @return
+     */
     public JButton getBtn_Delete() {
         return btn_Delete;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getBtn_Nouveau() {
         return btn_Nouveau;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getBtn_Save() {
         return btn_Save;
     }
 
+    /**
+     *
+     * @return
+     */
     public JList<String> get_listChoco() {
         return list_Choco;
     }
 
+    /**
+     *
+     * @return
+     */
     public JScrollPane getList_Choco() {
         return scrollpane_ChocoList;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getPannel_ImgChoco() {
         return pannel_ImgChoco;
     }
 
+    /**
+     *
+     * @return
+     */
     public JScrollPane getScroll_Descript() {
         return scroll_Descript;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtzone_NomChoco() {
         return txtzone_NomChoco;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextField getTxtzone_PourcentChoco() {
         return txtzone_PourcentChoco;
     }
 
+    /**
+     *
+     * @param jList1
+     */
     public void setjList1(JList<String> jList1) {
         this.list_Choco = jList1;
     }
 
+    /**
+     *
+     * @param pannel_ImgChoco
+     */
     public void setPannel_ImgChoco(JPanel pannel_ImgChoco) {
         this.pannel_ImgChoco = pannel_ImgChoco;
     }
 
+    /**
+     *
+     * @param txtzone_Descript
+     */
     public void setTxtzone_Descript(JTextArea txtzone_Descript) {
         this.txtzone_Descript = txtzone_Descript;
     }
 
+    /**
+     *
+     * @param txtzone_NomChoco
+     */
     public void setTxtzone_NomChoco(JTextField txtzone_NomChoco) {
         this.txtzone_NomChoco = txtzone_NomChoco;
     }
 
+    /**
+     *
+     * @param txtzone_PourcentChoco
+     */
     public void setTxtzone_PourcentChoco(JTextField txtzone_PourcentChoco) {
         this.txtzone_PourcentChoco = txtzone_PourcentChoco;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextArea getTxtzone_Descript() {
         return txtzone_Descript;
     }
